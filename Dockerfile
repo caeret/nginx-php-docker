@@ -1,9 +1,5 @@
 FROM php:7.3-fpm-alpine
 
-ARG UID=1000
-
-ARG GID=1000
-
 RUN apk add --no-cache tzdata && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo "Asia/Shanghai" > /etc/timezone && \
@@ -17,8 +13,6 @@ RUN apk add --no-cache icu-dev libpng freetype-dev libjpeg-turbo-dev zlib-dev sh
     docker-php-ext-install intl pdo_mysql gd bcmath
 
 RUN apk add --no-cache nginx supervisor
-
-RUN usermod -u $UID www-data && groupmod -g $GID www-data
 
 COPY supervisord/supervisord.conf /etc/supervisord.conf
 COPY php/php.ini /usr/local/etc/php
