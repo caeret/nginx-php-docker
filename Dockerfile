@@ -8,9 +8,9 @@ RUN apk add --no-cache tzdata && \
 RUN wget https://getcomposer.org/composer.phar -O /usr/local/bin/composer && \
     chmod a+x /usr/local/bin/composer
 
-RUN apk add --no-cache icu-dev libpng freetype-dev libjpeg-turbo-dev zlib-dev shadow && \
+RUN apk add --no-cache libzip-dev icu-dev libpng freetype-dev libjpeg-turbo-dev zlib-dev shadow && \
     docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-png-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
-    docker-php-ext-install intl pdo_mysql gd bcmath
+    docker-php-ext-install zip intl pdo_mysql gd bcmath
 
 RUN apk add --no-cache nginx supervisor git
 
