@@ -19,8 +19,8 @@ COPY php/php.ini /usr/local/etc/php
 COPY php/www.conf php/zz-docker.conf /usr/local/etc/php-fpm.d/
 COPY nginx /etc/nginx
 COPY entrypoint.sh /entrypoint.sh
-
 RUN chmod a+x /entrypoint.sh
+RUN chown -R www-data:www-data /var/tmp/nginx
 
 WORKDIR /var/www
 
