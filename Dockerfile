@@ -12,7 +12,7 @@ RUN apk add --no-cache icu-dev libpng freetype-dev libjpeg-turbo-dev zlib-dev sh
     docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-png-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
     docker-php-ext-install intl pdo_mysql gd bcmath
 
-RUN apk add --no-cache nginx supervisor
+RUN apk add --no-cache nginx supervisor git
 
 COPY supervisord/supervisord.conf /etc/supervisord.conf
 COPY php/php.ini /usr/local/etc/php
